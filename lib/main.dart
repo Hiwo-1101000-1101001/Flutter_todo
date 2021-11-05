@@ -1,168 +1,65 @@
 import "package:flutter/material.dart";
+import 'const.dart'; // Const
+// Widgets
+import 'package:flutter_app/widgets/buttonsheet_button_widget.dart';
+import 'widgets/card_widget.dart';
 
 void main() => runApp(App());
 
 class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         theme: ThemeData(
-          scaffoldBackgroundColor: Color.fromRGBO(72, 67, 82, 1),
-          primaryColor: const Color.fromRGBO(255, 0, 0, 1),
-          fontFamily: 'Jost'
-        ),
+            // Назначил цвет фона
+            scaffoldBackgroundColor: BACKGROUND_COLOR,
+            // Назначил шрифт из файла pubspec.yaml
+            fontFamily: FONT_FAMILY),
         home: Scaffold(
+          // Создал AppBar
           appBar: AppBar(
-            backgroundColor: Color.fromRGBO(72, 67, 82, 1),
-            elevation: 0,
+            backgroundColor: BACKGROUND_COLOR, // Цвет у AppBar
+            elevation: 0, // Убрал дефолтную тень у AppBar
             title: Container(
-              margin: EdgeInsets.only(
+              // Внешние отступы сверху и снизу у AppBar
+              margin: const EdgeInsets.only(
                 top: 25.0,
                 bottom: 25.0,
               ),
               child: Center(
+                // Это для центровки
+                // Ставлю логотип приложения
                 child: Image.asset(
-                  "assets/images/todo_logo.png",
+                  LOGO,
                   width: 60.0,
                 ),
               ),
             ),
           ),
+          // Началась основная часть приложения
           body: Container(
-            padding: EdgeInsets.all(30.0),
-            width: double.infinity,
+            padding: CONTAINER, // Отступы от краев
+            width: double.infinity, // На все длинну
+            // Это контейнер в котором все...
             child: Container(
-              height: double.infinity,
+              height: double.infinity, // На всю высоту
+              // Колонка с папками заданий
               child: Column(
                 children: [
+                  // Вот и сама карточка папки
                   Container(
-                    margin: EdgeInsets.only(bottom: 15.0),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.black, padding: EdgeInsets.all(30.0)),
-                      child: Container(
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  child: const Text(
-                                    "Папка заданий #2",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16.0),
-                                  ),
-                                ),
-                                Container(
-                                  alignment: Alignment.topRight,
-                                  child: const Text(
-                                    "2/5 заданий",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color:
-                                            Color.fromRGBO(216, 216, 216, 1)),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              alignment: Alignment.bottomLeft,
-                              child: const Text(
-                                "05.11.2021",
-                                textAlign: TextAlign.left,
-                                textDirection: TextDirection.ltr,
-                                style: TextStyle(
-                                  color: Color.fromRGBO(216, 216, 216, 1),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      onPressed: () {},
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 15.0),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.black, padding: EdgeInsets.all(30.0)),
-                      child: Container(
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  child: const Text(
-                                    "Папка заданий #1",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16.0),
-                                  ),
-                                ),
-                                Container(
-                                  alignment: Alignment.topRight,
-                                  child: const Text(
-                                    "2/5 заданий",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color:
-                                            Color.fromRGBO(216, 216, 216, 1)),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              alignment: Alignment.bottomLeft,
-                              child: const Text(
-                                "05.11.2021",
-                                textAlign: TextAlign.left,
-                                textDirection: TextDirection.ltr,
-                                style: TextStyle(
-                                  color: Color.fromRGBO(216, 216, 216, 1),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      onPressed: () {},
-                    ),
+                    margin:
+                        EdgeInsets.only(bottom: 15.0), // Внешний отступ снизу
+                    child: CardWidget(), // Создал кнопку для кликабельности карточки
                   ),
                 ],
               ),
             ),
           ),
-          bottomSheet: Container(
-            decoration: const BoxDecoration(
-              color: Color.fromRGBO(72, 67, 82, 1),
-            ),
-            padding:
-                const EdgeInsets.only(left: 30.0, right: 30.0, bottom: 40.0),
-            width: double.infinity,
-            child: ElevatedButton(
-                // style: ButtonStyle(
-                //     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                //         RoundedRectangleBorder(
-                //   borderRadius: BorderRadius.circular(5.0),
-                // ))),
-                style: ElevatedButton.styleFrom(
-                  primary: const Color.fromRGBO(21, 255, 185, 1),
-                  padding: const EdgeInsets.all(30.0),
-                ),
-                onPressed: () {},
-                child: const Text(
-                  "Добавить папку заданий",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold),
-                )),
-          ),
+          // Место для кнопки снизу
+          bottomSheet: ButtonSheetButtonWidget(),
         ));
   }
 }
