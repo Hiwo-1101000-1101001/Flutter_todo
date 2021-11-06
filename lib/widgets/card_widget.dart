@@ -24,7 +24,7 @@ class CardWidget extends StatelessWidget {
                 Text(
                   title ?? "папка без названия",
                   style: const TextStyle(
-                      color: WHITE, // цвет текста
+                      color: BLACK, // цвет текста
                       fontWeight: FONT_WEIGHT_BOLD,
                       fontSize: DEFAULT_FONT_SIZE),
                 ),
@@ -36,7 +36,7 @@ class CardWidget extends StatelessWidget {
             ),
             Container(
               alignment: Alignment
-                  .bottomLeft, // Ставим текст на лево (почему-то по дефолту текст на центре)
+                  .bottomLeft, // текст на левую сторону
               child: const Text(
                 "05.11.2021",
                 style: TextStyle(

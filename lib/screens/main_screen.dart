@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/const.dart';
-import 'package:flutter_app/screens/todo_detail_screen.dart';
+import 'package:flutter_app/const.dart'; // Const
 
 // Widgets
-import 'package:flutter_app/widgets/buttonsheet_button_widget.dart';
-import 'package:flutter_app/widgets/card_widget.dart';
+import 'package:flutter_app/widgets/buttonsheet_button_widget.dart'; // Кнопка добавления
+import 'package:flutter_app/widgets/card_widget.dart'; // Карта папки
 
+// Виджет главной страници
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Создал AppBar
+      // Создание AppBar
       appBar: AppBar(
         backgroundColor: BACKGROUND_COLOR, // Цвет у AppBar
-        elevation: 0, // Убрал дефолтную тень у AppBar
+        elevation: 0, // Убирает дефолтную тень
         title: Container(
-          padding: EdgeInsets.only(top: 15.0),
+          padding: const EdgeInsets.only(top: 15.0),
           child: Center(
-            // Ставлю логотип приложения
+            // логотип приложения
             child: Image.asset(
               LOGO,
               width: 60.0,
@@ -31,22 +31,26 @@ class MainScreen extends StatelessWidget {
         padding: CONTAINER, // Отступы от краев
         width: double.infinity, // На все длинну
         child: Container(
-          height: double.infinity, // На всю высоту
-          // Колонка с папками заданий
-          child: ListView(
-            children: <Widget>[
-              // Кнопка добавления папки задния
-              ButtonSheetButtonWidget(),
-              CardWidget(
-                title: "Hello world",
+            height: double.infinity, // На всю высоту
+            // Колонка с папками заданий
+            child: Container(
+              child: Column(
+                children: [
+                  // Кнопка добавления папки заданий
+                  const ButtonSheetButtonWidget(title: "Добавить папку заданий",),
+                  Expanded(
+                    child: ListView(
+                      children: const [
+                        CardWidget(
+                          title: "Hello world",
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
-              CardWidget(
-                title: null,
-              ),
-            ],
-          ),
-        ),
-      )
+            )),
+      ),
     );
   }
 }
