@@ -15,6 +15,7 @@ const CARD_BACKGROUND = Colors.white;
 const BLACK = Colors.black;
 const WHITE = Colors.white;
 const GRAY = Color(0xFF7C7C7C);
+const LIGHT_GRAY = Color(0xFFF6F6F6);
 const BACKGROUND_COLOR = Color(0xFF27292D);
 
 // Buttons

@@ -3,22 +3,17 @@ import 'package:flutter_app/const.dart'; // Const
 
 // Pages
 import 'package:flutter_app/screens/main_screen.dart'; // HomePage
-import 'package:flutter_app/screens/todo_detail_screen.dart'; // DetalScreen 
+import 'package:flutter_app/screens/create_task.dart'; // DetalScreen 
 
 // DataBase
 import 'dart:async';
 
-import 'package:path/path.dart'; // файлы на диске
-import 'package:sqflite/sqflite.dart'; // Для sqlite db
+// import 'package:path/path.dart'; // файлы на диске
+// import 'package:sqflite/sqflite.dart'; // Для sqlite db
 import 'package:flutter/widgets.dart';
 
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final database = openDatabase(
-    join(await getDatabasesPath(), 'doggie_database.db'),
-  );
-  
+void main() async {  
   runApp(App());
 }
 
@@ -35,7 +30,7 @@ class App extends StatelessWidget {
         // Главный экран
         '/': (context) => const MainScreen(),
         // Страница детальной информации о задачах
-        '/detail': (context) => const DetailScreen()
+        '/create': (context) => const DetailScreen()
       },
       theme: ThemeData(
         // цвет фона

@@ -9,3 +9,4 @@ class DetailScreen extends StatelessWidget {
     return Container();
   }
 }
+

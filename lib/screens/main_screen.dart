@@ -37,12 +37,31 @@ class MainScreen extends StatelessWidget {
               child: Column(
                 children: [
                   // Кнопка добавления папки заданий
-                  const ButtonSheetButtonWidget(title: "Добавить папку заданий",),
+                  const ButtonSheetButtonWidget(
+                    title: "Добавить задание",
+                  ),
                   Expanded(
                     child: ListView(
-                      children: const [
-                        CardWidget(
-                          title: "Hello world",
+                      children: [
+                        Center(
+                          child: Container(
+                            margin: const EdgeInsets.only(bottom: 20.0, top: 5.0),
+                            child: const Text(
+                            "Задания",
+                            style: TextStyle(
+                                color: WHITE,
+                                fontSize: 20.0,
+                                fontWeight: FONT_WEIGHT_BOLD),
+                          )),
+                        ),
+                        const CardWidget(
+                          title: "Задание №1",
+                        ),
+                        const CardWidget(
+                          title: "Задание №2",
+                        ),
+                        const CardWidget(
+                          title: "Задание №3",
                         ),
                       ],
                     ),
